@@ -10,13 +10,14 @@
     --cream: #FFF6E9;
     --charcoal: #292522; */
     --color-primary-brand-1: #FFF6E9;
-    --color-primary-brand-2: #FFD79C;
+    --color-primary-brand-2: #ffd79c9c;
     --color-primary-light-1: #FFFFFF;
     --color-primary-light-2: #FCFAF8;
     --color-primary-light-3: #F0EBE4;
     --color-primary-dark-1: #3A2D19;
     --color-primary-dark-2: #594830;
     --color-primary-dark-3: #72634C;
+    --color-accent: #B85C38;
     --font-title: "Playfair Display", serif;
     --font-text: "Poppins", sans-serif;
 }
@@ -45,8 +46,19 @@ body {
 }
 
 .book-button:hover {
-    background-color: var(--color-primary-light-1);
+    background-color: transparent;
     color: var(--color-primary-dark-2);
+    border: 1px solid var(--color-primary-dark-2);
+}
+.book-button-lighter {
+    background-color:transparent;
+    color: var(--color-primary-dark-2);
+    border: 1px solid var(--color-primary-dark-2);
+}
+
+.book-button-lighter:hover {
+    background-color: var(--color-primary-dark-2);
+    color: var(--color-primary-light-1);
     border: 1px solid var(--color-primary-dark-2);
 }
 .navbar{
@@ -56,22 +68,23 @@ body {
     color: var(--color-primary-dark-1);
 }
 .text-warning {
-    color: var(--color-primary-brand-2)
+    color: var(--color-accent)!important;
+    font-weight: bold;
 }
 
 .beans .card{
     background-color: var(--color-primary-brand-1);
 }
-
-
+.beans-text-space{
+    letter-spacing: 3px;
+}
 .rounded-circle{
     background-color: var(--color-primary-brand-2);
     width: 50px;
     height: 50px;
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
-    /* margin: 0 auto; */
+}
+.banner{
+    background-color: var(--color-primary-brand-2);
 }
 
 /* Responsiviteti */
