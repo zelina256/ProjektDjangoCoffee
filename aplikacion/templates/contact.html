@@ -2,5 +2,29 @@
 {% load static %}
 {% block title %} Contact page {% endblock %}
 {% block content %}
-
+<main class="container py-5">
+    <section class="mx-auto w-75">
+        <h1 class="mb-2">Contact us</h1>
+        <p class="mb-4">Have a question? Send us a message.</p>
+        <form>
+            <div class="mb-3">
+                <label for="contact-name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="contact-name" >
+            </div>
+               <div class="mb-3">
+                <label for="contact-surname" class="form-label">Surname</label>
+                <input type="text" class="form-control" id="contact-surname">
+            </div>
+            <div class="mb-3">
+                <label for="contact-email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="contact-email">
+            </div>
+            <div class="mb-3">
+                <label for="contact-message" class="form-label">Message</label>
+                <textarea class="form-control" id="contact-message" name="message" rows="5"></textarea>
+            </div>
+            <button type="submit" class="btn book-button">Send message</button>
+        </form>
+    </section>
+</main>
 {% endblock %}

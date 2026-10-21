@@ -1,5 +1,28 @@
-<!-- nis footer -->
- <footer class="container-fluid">
-    <h1>Duhet te vendoset kodi i footer</h1>
- </footer>
- <!-- fund footer -->
+<footer class="site-footer">
+    <div class="container py-5">
+        <div class="row g-4">
+            <div class="col-12 col-lg-5">
+                <a class="footer-brand" href="{% url 'homePage' %}">Good Coffee</a>
+                <p class="footer-description">
+                    Freshly brewed coffee, delicious bites, and a cozy place to make your day brighter.
+                </p>
+            </div>
+            <div class="col-6 col-lg-3">
+                <h2 class="footer-heading">Explore</h2>
+                <ul class="footer-links list-unstyled">
+                    <li><a href="{% url 'homePage' %}">Home</a></li>
+                    <li><a href="{% url 'menuPage' %}">Menu</a></li>
+                    <li><a href="{% url 'aboutPage' %}">About</a></li>
+                    <li><a href="{% url 'contactPage' %}">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-lg-4">
+                <h2 class="footer-heading">Get in touch</h2>
+                <p class="footer-description">Questions or want to book a table? We would love to hear from you.</p>
+                <a class="footer-contact-link" href="{% url 'contactPage' %}">Contact us</a>
+            </div>
+        </div>
+        <hr class="footer-divider">
+        <p class="footer-copyright mb-0">&copy; {% now "Y" %} Good Coffee. All rights reserved.</p>
+    </div>
+</footer>

@@ -1,97 +1,78 @@
 {% extends 'index.html' %}
 {% load static %}
-{% block title %} Home page {% endblock %}
+{% block title %}Good Coffee | Home{% endblock %}
 {% block content %}
-<main>
-    <!-- nis banner -->
-    <section class="banner py-5">
+<main class="home-page">
+    <section class="home-hero">
         <div class="container">
-            <div class="row g-0">
-                <div class="col-12 col-lg-7">
-                    <p class="text-uppercase beans-text-space"><span class="text-warning">Good Coffee . </span> Better
-                        days</p>
-                    <h1 class="display-5">More then coffee, <br> It's a feeling</h1>
-                    <p class="fs-6">Freshly brewed coffee, delicious bites and a cozy atmosphere space <br> to make your
-                        day brighter</p>
-                    <a href="{% url 'menuPage' %}" class="btn book-button">View our menu</a>
-                    <a href="book.html" class="btn book-button-lighter"> <i class="fa-solid fa-calendar me-2"></i>Book a
-                        Table</a></a>
-                </div>
-                <div class="col-12 col-lg-5">
-                    <img src="{% static 'images/img1.jpg' %} " alt="" class="img-fluid rounded">
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- fund banner -->
-    <!-- nis karaktersitika -->
-    <section class="beans my-5">
-        <div class="container">
-            <div class="row g-0">
-                <!-- col-12 => ne ekranet e vogla te se gjithe hapesiren -->
-                <!-- col-md-6 => ne tablet kolona vijne 2 n2 nje rresht dhe 
-                  2 te tjera ne rresht tjeter -->
-                <!-- col-lg-3 => ne ekranet e medha 4 kolona ne rresht -->
-                <div class="col-12 col-md-6 col-lg-3">
-                    <div class="card text-center border-0 border-end border-1 rounded-0 p-2">
-                        <div class="card-body">
-                            <div class="rounded-circle mx-auto d-flex  justify-content-center align-items-center mb-2">
-                                <i class="fa-solid fa-seedling"></i>
-                            </div>
-                            <h3 class="card-title fs-4">Quality Beans</h3>
-                            <p>Sourced from the best farms</p>
-                        </div>
+            <div class="row align-items-center g-5">
+                <div class="col-12 col-lg-6">
+                    <p class="home-eyebrow"><span></span> Good coffee. Better days.</p>
+                    <h1>More than coffee.<br><em>It's a feeling.</em></h1>
+                    <p class="home-hero-copy">
+                        Freshly brewed coffee, delicious bites, and a cozy place to make your day brighter.
+                    </p>
+                    <div class="home-hero-actions">
+                        <a href="{% url 'menuPage' %}" class="btn home-primary-button">
+                            Explore our menu <i class="fa-solid fa-arrow-right ms-2" aria-hidden="true"></i>
+                        </a>
+                        <a href="{% url 'contactPage' %}" class="home-secondary-link">
+                            Come say hello <i class="fa-solid fa-arrow-up-right-from-square ms-1" aria-hidden="true"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 col-lg-3">
-                    <div class="card text-center border-0 border-end border-1 rounded-0 p-2">
-                        <div class="card-body">
-                            <div class="rounded-circle mx-auto d-flex justify-content-center align-items-center mb-2">
-                                <i class="fa-solid fa-leaf"></i>
-                            </div>
-                            <h3 class="card-title fs-4">Freshly Brewed</h3>
-                            <p>Made with passion daily</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3">
-                    <div class="card text-center border-0 border-end border-1 rounded-0 p-2">
-                        <div class="card-body">
-                            <div class="rounded-circle mx-auto d-flex  justify-content-center align-items-center mb-2">
-                                <i class="fa-regular fa-heart"></i>
-                            </div>
-                            <h3 class="card-title fs-4">Cozy Atmosphere</h3>
-                            <p>A place to relax and connect</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3">
-                    <div class="card text-center border-0 rounded-0 p-2">
-                        <div class="card-body">
-                            <div class="rounded-circle mx-auto d-flex justify-content-center align-items-center mb-2">
-                                <i class="fa-solid fa-people-group"></i>
-                            </div>
-                            <h3 class="card-title fs-4">Friendly Team</h3>
-                            <p>Always here for you</p>
+                <div class="col-12 col-lg-6">
+                    <div class="home-hero-visual">
+                        <img src="{% get_media_prefix %}product/nameless-3791-5nYLHK68TLM-unsplash.jpg"
+                            alt="Freshly prepared latte with heart-shaped latte art">
+                        <div class="home-image-note">
+                            <i class="fa-solid fa-heart" aria-hidden="true"></i>
+                            <span>Made fresh,<br>served with love</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="about my-5">
+    <section class="home-services">
         <div class="container">
-            <div class="row align-items-center justify-content-center">
+            <div class="row g-4">
+                {% for service in allServices %}
+                <div class="col-12 col-md-6 col-lg-3">
+                    <article class="home-service-card h-100">
+                        <div class="home-service-icon">{{service.service_icon|safe}}</div>
+                        <h2>{{service.service_title}}</h2>
+                        <p>{{service.service_description}}</p>
+                    </article>
+                </div>
+                {% empty %}
+                <div class="col-12">
+                    <p class="home-services-empty">We’re brewing up something special. Check back soon.</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section class="home-story">
+        <div class="container">
+            <div class="row align-items-center g-4 g-lg-5">
                 <div class="col-12 col-lg-6">
-                    <img src="images/img2.jpg" alt="About Image" class="rounded img-fluid">
+                    <div class="home-story-image">
+                        <img src="{% get_media_prefix %}product/luisana-zerpa-MJPr6nOdppw-unsplash.jpg"
+                            alt="A freshly baked cupcake topped with cream">
+                        <span class="home-story-image-label">A little something sweet</span>
+                    </div>
                 </div>
                 <div class="col-12 col-lg-6">
-                    <p class="text-uppercase beans-text-space text-warning">Our story</p>
-                    <h2 class="display-5">A Small Place<br>with a Big Passion</h2>
-                    <p>We’re a local coffee shop dedicated to great coffee, good food and even better people. Every
-                        cup we serve is a part of our story.</p>
-                    <a href="{% url 'aboutPage' %}" class="btn book-button-lighter">Learn
-                        More</a>
+                    <p class="home-section-label">Our story</p>
+                    <h2>A small place<br>with a big passion.</h2>
+                    <p class="home-story-copy">
+                        We’re a local coffee shop dedicated to great coffee, good food, and even better people.
+                        Every cup we serve is part of our story.
+                    </p>
+                    <a href="{% url 'aboutPage' %}" class="btn home-outline-button">
+                        Get to know us <i class="fa-solid fa-arrow-right ms-2" aria-hidden="true"></i>
+                    </a>
                 </div>
             </div>
         </div>
