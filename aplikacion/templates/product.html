@@ -8,7 +8,8 @@
             <a href="{% url 'homePage' %}">Home</a>
             <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
             {% if getProduct.product_category %}
-            <a href="{% url 'categoryPage' getProduct.product_category.category_slug %}">{{getProduct.product_category.category_name}}</a>
+            <a
+                href="{% url 'categoryPage' getProduct.product_category.category_slug %}">{{getProduct.product_category.category_name}}</a>
             <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
             {% endif %}
             <span aria-current="page">{{getProduct.product_name}}</span>
@@ -26,17 +27,34 @@
                     <p class="product-category-label">{{getProduct.product_category.category_name}}</p>
                     {% endif %}
                     <h1>{{getProduct.product_name}}</h1>
-                    {% if getProduct.product_price %}
-                    <p class="product-price">{{getProduct.product_price}} <span>$</span></p>
-                    {% endif %}
+                    {% comment %} One-to-One {% endcomment %}
+                    <h2>Price</h2>
+                    <div class="product-pricing">
+                        {% if getProduct.sale.price_sale %}
+                        <p class="product-price product-price-original"><s>{{getProduct.product_price}} <span>$</span></s></p>
+                        <p class="product-price product-price-sale">{{getProduct.sale.price_sale}} <span>$</span></p>
+                        {% else %}
+                        <p class="product-price">{{getProduct.product_price}} <span>$</span></p>
+                        {% endif %}
+                    </div>
                     {% if getProduct.product_description %}
                     <p class="product-description">{{getProduct.product_description}}</p>
                     {% endif %}
+                    {% comment %} Many-to-many {% endcomment %}
+                    <h3>Ingredients</h3>
+                    <ul class="product-ingredients">
+                        {% for ingredient in getProduct.product_ingredient.all %}
+                        <li>{{ingredient.ingredient_name}}</li>
+                        {% endfor %}
+                    </ul>
                     <div class="product-details-divider"></div>
-                    <p class="product-note"><i class="fa-solid fa-mug-hot" aria-hidden="true"></i> A little moment of comfort in every bite.</p>
+                    <p class="product-note"><i class="fa-solid fa-mug-hot" aria-hidden="true"></i> A little moment of
+                        comfort in every bite.</p>
                     {% if getProduct.product_category %}
-                    <a href="{% url 'categoryPage' getProduct.product_category.category_slug %}" class="btn product-back-link">
-                        <i class="fa-solid fa-arrow-left me-2" aria-hidden="true"></i>More from {{getProduct.product_category.category_name}}
+                    <a href="{% url 'categoryPage' getProduct.product_category.category_slug %}"
+                        class="btn product-back-link">
+                        <i class="fa-solid fa-arrow-left me-2" aria-hidden="true"></i>More from
+                        {{getProduct.product_category.category_name}}
                     </a>
                     {% else %}
                     <a href="{% url 'menuPage' %}" class="btn product-back-link">

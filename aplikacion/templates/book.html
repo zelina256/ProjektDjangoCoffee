@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} Book Page {% endblock %}
+{% block content %}
+<main class="container py-5">
+    <section class="mx-auto w-75">
+        <h1 class="mb-2">Book a table</h1>
+           <p class="mb-4">Make your reservation below.</p>
+        <form method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="mb-3">
+                <label for="" class="form-label">{{field.label}}</label>
+                {{field}}
+            </div>
+
+
+            {% endfor %}
+            <button type="submit" class="btn book-button">Send reservation</button>
+        </form>
+    </section>
+</main>
+{% endblock %}

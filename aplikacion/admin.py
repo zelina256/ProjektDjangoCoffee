@@ -4,3 +4,7 @@ from .models import *
 admin.site.register(Service)
 admin.site.register(Category)
 admin.site.register(Product)
+admin.site.register(Ingredient)
+admin.site.register(Sale)
+admin.site.register(Contact)
+admin.site.register(Book)

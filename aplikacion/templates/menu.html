@@ -2,5 +2,49 @@
 {% load static %}
 {% block title %} Menu page {% endblock %}
 {% block content %}
+<main class="category-page">
+    <section class="category-heading">
+        <div class="container">
+            <p class="category-eyebrow">Fresh from our kitchen</p>
+            <h1>Menu</h1>
 
+        </div>
+    </section>
+    <section class="container category-products" aria-label="products">
+        <div class="row g-4">
+            {% for product in allProduct %}
+            <div class="col-12 col-md-6 col-lg-4">
+                <article class="card category-product-card h-100">
+                    <a class="category-product-image-link" href="{% url 'productPage' product.product_slug %}" aria-label="View {{product.product_name}}">
+                        <img src="{{product.product_image.url}}" class="card-img-top category-product-image" alt="{{product.product_name}}">
+                    </a>
+                    <div class="card-body d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-start gap-3">
+                            <h2 class="card-title category-product-title">{{product.product_name}}</h2>
+                            {% if product.product_price %}
+                            <p class="category-product-price mb-0">{{product.product_price}} $</p>
+                            {% endif %}
+                        </div>
+                        {% if product.product_description %}
+                        <p class="category-product-description">{{product.product_description|truncatewords:18}}</p>
+                        {% endif %}
+                        <a href="{% url 'productPage' product.product_slug %}" class="btn category-product-button mt-auto">
+                            Discover more <i class="fa-solid fa-arrow-right ms-2" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+            {% empty %}
+            <div class="col-12">
+                <div class="category-empty-state">
+                    <i class="fa-solid fa-mug-hot" aria-hidden="true"></i>
+                    <h2>Something delicious is brewing</h2>
+                    <p>There are no items in this category just yet. Please check back soon.</p>
+                    <a href="{% url 'menuPage' %}" class="btn category-product-button">Browse the menu</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</main>
 {% endblock %}

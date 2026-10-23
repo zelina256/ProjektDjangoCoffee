@@ -6,22 +6,23 @@
     <section class="mx-auto w-75">
         <h1 class="mb-2">Contact us</h1>
         <p class="mb-4">Have a question? Send us a message.</p>
-        <form>
+        <form method="POST">
+            {% csrf_token %}
             <div class="mb-3">
                 <label for="contact-name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="contact-name" >
+                <input type="text" class="form-control" id="contact-name" name="firstname">
             </div>
                <div class="mb-3">
                 <label for="contact-surname" class="form-label">Surname</label>
-                <input type="text" class="form-control" id="contact-surname">
+                <input type="text" class="form-control" id="contact-surname" name="lastname">
             </div>
             <div class="mb-3">
                 <label for="contact-email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="contact-email">
+                <input type="email" class="form-control" id="contact-email" name="email">
             </div>
             <div class="mb-3">
                 <label for="contact-message" class="form-label">Message</label>
-                <textarea class="form-control" id="contact-message" name="message" rows="5"></textarea>
+                <textarea class="form-control" id="contact-message" name="comment" rows="5"></textarea>
             </div>
             <button type="submit" class="btn book-button">Send message</button>
         </form>

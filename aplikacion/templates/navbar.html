@@ -29,16 +29,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'aboutPage' %}">About</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="gallery.html">Gallery</a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'contactPage' %}">Contact</a>
                     </li>
 
                 </ul>
                 <div class="d-flex">
-                    <a href="book.html" class="btn book-button">
+                    <a href="{% url "bookPage" %}" class="btn book-button">
                         <i class="fa-solid fa-calendar me-2"></i>Book a Table</a>
                 </div>
             </div>
